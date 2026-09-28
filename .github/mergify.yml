@@ -1,0 +1,10 @@
+queue_rules:
+  - name: default
+    queue_conditions:
+      - base=main
+
+pull_request_rules:
+  - name: noop placeholder
+    conditions:
+      - base=main
+    actions: {}
