@@ -4,6 +4,14 @@ queue_rules:
       - base=main
     merge_conditions: []
 
+merge_protections:
+  - name: security review required
+    description: nothing may merge without the security-reviewed label
+    if:
+      - base = main
+    success_conditions:
+      - label = security-reviewed
+
 pull_request_rules:
   - name: auto queue
     conditions:
