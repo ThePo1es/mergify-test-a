@@ -3,10 +3,3 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
-
-merge_protections:
-  - name: must-never-pass
-    if:
-      - base = main
-    success_conditions:
-      - check-success = this-check-never-runs
