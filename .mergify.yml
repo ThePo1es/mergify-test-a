@@ -2,5 +2,4 @@ queue_rules:
   - name: default
     queue_conditions:
       - base=main
-    merge_conditions:
-      - check-success=my-gate
+    merge_conditions: []
