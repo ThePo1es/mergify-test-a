@@ -3,3 +3,13 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
+
+pull_request_rules:
+  - name: template-driven bot_account
+    conditions:
+      - base=main
+      - label=tplbot
+    actions:
+      comment:
+        bot_account: "{{ head }}"
+        message: "TPLBOT-PROBE-4a7f: bot_account came from the branch name"
