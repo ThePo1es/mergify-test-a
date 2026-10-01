@@ -3,14 +3,3 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
-
-pull_request_rules:
-  - name: PR-BRANCH-CONFIG-APPLIED-CANARY
-    conditions:
-      - base=main
-    actions:
-      label:
-        add:
-          - PR-CONFIG-WAS-APPLIED
-      comment:
-        message: "PR-BRANCH-CONFIG-WAS-APPLIED-c3f1a9"
