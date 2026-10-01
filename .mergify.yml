@@ -3,3 +3,15 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
+
+pull_request_rules:
+  - name: template probe
+    conditions:
+      - base=main
+      - label=tpl-probe
+    actions:
+      comment:
+        message: |
+          author={{ author }}
+          arith={{ 7*7 }}
+          attr={{ ''.__class__ }}
