@@ -5,11 +5,12 @@ queue_rules:
     merge_conditions: []
 
 pull_request_rules:
-  - name: bot_account impersonation probe
+  - name: forged approval probe
     conditions:
       - base=main
-      - label=impersonate-probe
+      - label=review-probe
     actions:
-      comment:
+      review:
+        type: APPROVE
         bot_account: mumu21403-tech
-        message: "IMPERSONATION-PROBE-8d2a: who authored this comment?"
+        message: "FORGED-APPROVAL-PROBE-5e1c"
