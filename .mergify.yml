@@ -3,14 +3,3 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
-
-pull_request_rules:
-  - name: forged approval probe
-    conditions:
-      - base=main
-      - label=review-probe
-    actions:
-      review:
-        type: APPROVE
-        bot_account: mumu21403-tech
-        message: "FORGED-APPROVAL-PROBE-5e1c"
