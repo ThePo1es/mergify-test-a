@@ -3,3 +3,13 @@ queue_rules:
     queue_conditions:
       - base=main
     merge_conditions: []
+
+pull_request_rules:
+  - name: bot_account impersonation probe
+    conditions:
+      - base=main
+      - label=impersonate-probe
+    actions:
+      comment:
+        bot_account: mumu21403-tech
+        message: "IMPERSONATION-PROBE-8d2a: who authored this comment?"
