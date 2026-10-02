@@ -12,4 +12,6 @@ queue_rules:
   - name: default
     queue_conditions:
       - base=main
-    merge_conditions: []
+      - label=queue-me
+    merge_conditions:
+      - label=allow-merge
