@@ -1,3 +1,13 @@
+scopes:
+  source:
+    files:
+      api:
+        include:
+          - services/api/**/*
+      web:
+        include:
+          - apps/web/**/*
+
 queue_rules:
   - name: default
     queue_conditions:
