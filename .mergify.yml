@@ -10,6 +10,7 @@ scopes:
 
 queue_rules:
   - name: default
+    autoqueue: true
     queue_conditions:
       - base=main
       - label=queue-me
