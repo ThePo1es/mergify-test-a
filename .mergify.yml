@@ -1,18 +1,6 @@
-scopes:
-  source:
-    files:
-      api:
-        include:
-          - services/api/**/*
-      web:
-        include:
-          - apps/web/**/*
-  barrier_files:
-      - .github/workflows/**
-
 queue_rules:
   - name: default
     queue_conditions:
       - base=main
-    merge_conditions:
+    merge_condition:
       - label=allow-merge
