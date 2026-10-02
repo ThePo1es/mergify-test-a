@@ -8,7 +8,8 @@ scopes:
         include:
           - apps/web/**/*
   barrier_files:
-    - .github/workflows/**
+    include:
+      - .github/workflows/**
 
 queue_rules:
   - name: default
