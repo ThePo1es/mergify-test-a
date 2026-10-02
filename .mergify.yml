@@ -8,14 +8,11 @@ scopes:
         include:
           - apps/web/**/*
   barrier_files:
-    include:
       - .github/workflows/**
 
 queue_rules:
   - name: default
-    autoqueue: true
     queue_conditions:
       - base=main
-      - label=queue-me
     merge_conditions:
       - label=allow-merge
