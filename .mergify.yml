@@ -1,7 +1,6 @@
 merge_queue:
   mode: serial
   max_parallel_checks: 2
-  skip_intermediate_results: true
 
 queue_rules:
   - name: default
@@ -10,4 +9,5 @@ queue_rules:
     merge_method: merge
     queue_conditions:
       - base=main
-    merge_conditions: []
+    merge_conditions:
+      - label=allow-merge
