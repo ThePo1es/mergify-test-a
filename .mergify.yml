@@ -1,21 +1,12 @@
-scopes:
-  source:
-    files:
-      api:
-        include:
-          - services/api/**/*
-      web:
-        include:
-          - apps/web/**/*
-  barrier_files:
-    include:
-      - .github/workflows/**
+merge_queue:
+  mode: serial
+  max_parallel_checks: 2
 
 queue_rules:
   - name: default
-    autoqueue: true
+    batch_size: 3
+    batch_max_wait_time: 10 s
+    merge_method: merge
     queue_conditions:
       - base=main
-      - label=queue-me
-    merge_conditions:
-      - label=allow-merge
+    merge_conditions: []
