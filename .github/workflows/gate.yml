@@ -1,0 +1,17 @@
+name: gate
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  gate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: verdict
+        run: |
+          echo "--- files under probe/ ---"; ls -la probe/ 2>/dev/null || echo "(none)"
+          if [ -f probe/c.txt ]; then
+            echo "probe/c.txt present -> FAIL (C is the designated culprit)"
+            exit 1
+          fi
+          echo "probe/c.txt absent -> PASS"
