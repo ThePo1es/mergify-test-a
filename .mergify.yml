@@ -1,21 +1,5 @@
-merge_queue:
-  mode: serial
-  max_parallel_checks: 2
-
 queue_rules:
   - name: default
-    batch_size: 3
-    batch_max_wait_time: 10 s
-    merge_method: merge
     queue_conditions:
       - base=main
-    merge_conditions:
-      - label=allow-merge
-
-pull_request_rules:
-  - name: automatically queue anything whose gate is green
-    conditions:
-      - base=main
-      - check-success=gate
-    actions:
-      queue:
+    merge_conditions: []
