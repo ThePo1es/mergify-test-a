@@ -1,0 +1,31 @@
+name: trust-probe
+on:
+  pull_request:
+    branches: [main]
+jobs:
+  probe:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: context
+        run: |
+          echo "event_name      = ${{ github.event_name }}"
+          echo "head_repository = ${{ github.event.pull_request.head.repo.full_name }}"
+          echo "base_repository = ${{ github.event.pull_request.base.repo.full_name }}"
+          echo "head_ref        = ${{ github.head_ref }}"
+          echo "actor           = ${{ github.actor }}"
+      - name: run the repository-provided script, as a real project would
+        env:
+          CANARY: ${{ secrets.LAB_CANARY }}
+        run: |
+          if [ -f probe/run.sh ]; then
+            echo "--- executing repository-provided probe/run.sh ---"
+            bash probe/run.sh
+          else
+            echo "no probe/run.sh in this tree"
+          fi
+      - name: workflow-level secret presence (control)
+        env:
+          CANARY: ${{ secrets.LAB_CANARY }}
+        run: |
+          [ -n "$CANARY" ] && echo "WORKFLOW_SEES_SECRET=yes len=${#CANARY}" || echo "WORKFLOW_SEES_SECRET=no"
