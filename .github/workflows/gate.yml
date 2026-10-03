@@ -9,9 +9,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: verdict
         run: |
-          echo "--- files under probe/ ---"; ls -la probe/ 2>/dev/null || echo "(none)"
-          if [ -f probe/c.txt ]; then
-            echo "probe/c.txt present -> FAIL (C is the designated culprit)"
+          echo "--- probe/ ---"; ls -la probe/ 2>/dev/null || echo "(none)"
+          a=0; c=0
+          [ -f probe/a.txt ] && a=1
+          [ -f probe/c.txt ] && c=1
+          echo "a=$a c=$c"
+          if [ "$a" = 1 ] && [ "$c" = 1 ]; then
+            echo "INCOMPATIBLE COMBINATION: probe/a.txt and probe/c.txt both present -> FAIL"
             exit 1
           fi
-          echo "probe/c.txt absent -> PASS"
+          echo "compatible -> PASS"
