@@ -11,3 +11,11 @@ queue_rules:
       - base=main
     merge_conditions:
       - label=allow-merge
+
+pull_request_rules:
+  - name: automatically queue anything whose gate is green
+    conditions:
+      - base=main
+      - check-success=gate
+    actions:
+      queue:
